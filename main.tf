@@ -1,20 +1,3 @@
-#this file consists of code for instances and sg
-provider "aws" {
-region = "us-east-2"
-}
-
-resource "aws_instance" "one" {
-  ami             = "ami-0aec300fa613b1c92"
-  instance_type   = "t2.micro"
-  key_name        = "sandhyanew"
-  vpc_security_group_ids = [aws_security_group.five.id]
-  availability_zone = "us-east-2a"
-  user_data       = <<EOF
-#!/bin/bash
-sudo -i
-yum install httpd -y
-systemctl start httpd
-chkconfig httpd on
 echo "hai all this is my app created by terraform infrastructurte by raham sir server-1" > /var/www/html/index.html
 EOF
   tags = {
@@ -23,11 +6,11 @@ EOF
 }
 
 resource "aws_instance" "two" {
-  ami             = "ami-0aec300fa613b1c92"
+  ami             = "ami-06b72b3b2a773be2b"
   instance_type   = "t2.micro"
-  key_name        = "sandhyanew"
+  key_name        = "mumbai"
   vpc_security_group_ids = [aws_security_group.five.id]
-  availability_zone = "us-east-2b"
+  availability_zone = "ap-south-1b"
   user_data       = <<EOF
 #!/bin/bash
 sudo -i
@@ -42,22 +25,22 @@ EOF
 }
 
 resource "aws_instance" "three" {
-  ami             = "ami-0aec300fa613b1c92"
+  ami             = "ami-06b72b3b2a773be2b"
   instance_type   = "t2.micro"
-  key_name        = "sandhyanew"
+  key_name        = "mumbai"
   vpc_security_group_ids = [aws_security_group.five.id]
-  availability_zone = "us-east-2a"
+  availability_zone = "ap-south-1a"
   tags = {
     Name = "app-server-1"
   }
 }
 
 resource "aws_instance" "four" {
-  ami             = "ami-0aec300fa613b1c92"
+  ami             = "ami-06b72b3b2a773be2b"
   instance_type   = "t2.micro"
-  key_name        = "sandhyanew"
+  key_name        = "mumbai"
   vpc_security_group_ids = [aws_security_group.five.id]
-  availability_zone = "us-east-2b"
+  availability_zone = "ap-south-1b"
   tags = {
     Name = "app-server-2"
   }
@@ -88,7 +71,7 @@ resource "aws_security_group" "five" {
 }
 
 resource "aws_s3_bucket" "six" {
-  bucket = "sandhyaterraserverbucketoo99"
+  bucket = "sandhyaterrabucket9898"
 }
 
 resource "aws_iam_user" "seven" {
@@ -103,7 +86,7 @@ default = ["user1", "user2", "user3", "user4"]
 }
 
 resource "aws_ebs_volume" "eight" {
- availability_zone = "us-east-2a"
+ availability_zone = "ap-south-1a"
   size = 40
   tags = {
     Name = "ebs-001"
