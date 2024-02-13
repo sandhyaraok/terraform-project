@@ -1,6 +1,7 @@
+
 resource "aws_elb" "bar" {
   name               = "sandhya-terraform-elb"
-  availability_zones = ["us-east-2a", "us-east-2b"]
+  availability_zones = ["ap-south-2a", "ap-south-2b"]
 
   listener {
     instance_port     = 80
@@ -29,7 +30,7 @@ resource "aws_elb" "bar" {
   cluster_identifier      = "aurora-cluster-demo"
   engine                  = "aurora-mysql"
   engine_version          = "5.7.mysql_aurora.2.11.2"
-  availability_zones      = ["us-east-2a", "us-east-2b"]
+  availability_zones      = ["ap-south-2a", "ap-south-2b"]
   database_name           = "mydb"
   master_username         = "sandhya"
   master_password         = "sandhya#444555"
@@ -39,7 +40,7 @@ resource "aws_elb" "bar" {
 
 /*resource "aws_instance" "one" {
   for_each = toset(["one", "two", "three"])
-  ami           = "ami-0aec300fa613b1c92 "
+  ami           = "ami-06b72b3b2a773be2b"
   instance_type = "t2.micro"
   tags = {
     Name = "instance-${each.key}"
