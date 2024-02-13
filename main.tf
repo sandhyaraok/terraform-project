@@ -1,3 +1,19 @@
+provider "aws" {
+region = "ap-south-1"
+}
+
+resource "aws_instance" "one" {
+  ami             = "ami-06b72b3b2a773be2b"
+  instance_type   = "t2.micro"
+  key_name        = "mumbai"
+  vpc_security_group_ids = [aws_security_group.five.id]
+  availability_zone = "ap-south-1a"
+  user_data       = <<EOF
+#!/bin/bash
+sudo -i
+yum install httpd -y
+systemctl start httpd
+chkconfig httpd on
 echo "hai all this is my app created by terraform infrastructurte by raham sir server-1" > /var/www/html/index.html
 EOF
   tags = {
